@@ -46,7 +46,7 @@ body {
     line-height: 1.5;
 }
 
-.textbox, #country-select, #description-input, #submit-button, #clear-button {
+.textbox, .selectbox, #description-input, #submit-button, #clear-button {
     padding: 10px;
     border-radius: 5px;
     border-color: lightgray;

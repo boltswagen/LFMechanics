@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>LF Mechanics - Repair Shop</title>
+
+        <!-- CSS link -->
         <link rel = "stylesheet" href = "repairshop.css"/>
     </head>
     <body>
@@ -29,14 +31,16 @@
                 </label>
                 <br/><br/>
                 <label>Country of Residence:
-                    <select name = "country" id = "country-select" required>
-                        <option value = "Canada">Canada</option>
-                        <option value = "USA">USA</option>
-                        <option value = "UK">UK</option>
-                        <option value = "Other">Other</option>
+                    <select name = "country" class = "selectbox" id = "country-select" required>
+                        <option value = "Canada" id = "canada-select">Canada</option>
+                        <option value = "USA" class = "other-select">USA</option>
+                        <option value = "UK" class = "other-select">UK</option>
+                        <option value = "Other" class = "other-select">Other</option>
                     </select>
                 </label>
-                <br/><br/>
+                <br/>
+                <div id = "followup-location"></div> <!-- DOM elements added here -->
+                <br/>
                 <label>Description of the issue:<br/>
                     <textarea name = "issue" id = "description-input" rows = 15 cols = 40 required></textarea>
                 </label>
@@ -49,5 +53,8 @@
                 <input type = "reset" value = "Clear Form" id = "clear-button"/>
             </form>
         </div>
+
+        <!-- Javascript link -->
+        <script type = "text/javascript" src = "repairshop.js"></script>
     </body>
 </html>
