@@ -12,7 +12,7 @@
                 </div>
                 <div class = "header-text">
                     <h1>LF Mechanics</h1>
-                    <span>EST. 2002</span>
+                    <span>EST. 2025</span>
                 </div>
             </div>
         </header>
@@ -20,7 +20,33 @@
         <div class = "repair-form">
             <h2>Repair Consultation Form</h2>
             <form>
-
+                <label>Name:
+                    <input type = "text" class = "textbox" id = "name-input" placeholder = "Enter your full name" required/>
+                </label>
+                <br/><br/>
+                <label>Email:
+                    <input type = "email" class = "textbox" id = "email-input" placeholder = "Enter your email" required/>
+                </label>
+                <br/><br/>
+                <label>Country of Residence:
+                    <select name = "country" id = "country-select" required>
+                        <option value = "Canada">Canada</option>
+                        <option value = "USA">USA</option>
+                        <option value = "UK">UK</option>
+                        <option value = "Other">Other</option>
+                    </select>
+                </label>
+                <br/><br/>
+                <label>Description of the issue:<br/>
+                    <textarea name = "issue" id = "description-input" rows = 15 cols = 40 required></textarea>
+                </label>
+                <br/><br/>
+                <label>
+                    <input type = "checkbox" id = "confirm-checkbox" required/> I confirm all of the information presented above is accurate.
+                </label>
+                <br/><br/>
+                <input type = "submit" value = "Submit Request" id = "submit-button"/>
+                <input type = "reset" value = "Clear Form" id = "clear-button"/>
             </form>
         </div>
     </body>

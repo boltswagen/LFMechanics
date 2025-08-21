@@ -45,3 +45,23 @@ body {
     margin-left: 3%;
     line-height: 1.5;
 }
+
+.textbox, #country-select, #description-input, #submit-button, #clear-button {
+    padding: 10px;
+    border-radius: 5px;
+    border-color: lightgray;
+    border-style: solid;
+    background-color: #30302c;
+    color: white;
+    font-size: 90%;
+}
+
+#submit-button:hover, #clear-button:hover {
+    padding: 10px;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    background-color: lightgray;
+    color: black;
+    font-size: 90%;
+}
