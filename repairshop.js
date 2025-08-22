@@ -9,6 +9,7 @@ document.getElementById("canada-select").onclick = function(){
     provinceLabel.textContent = "Province of Residence: ";
     const newSelect = document.createElement("select");
     newSelect.className = "selectbox";
+    newSelect.required = true;
 
     // Adding options to select
     const option1 = document.createElement("option");
@@ -82,6 +83,7 @@ document.getElementById("canada-select").onclick = function(){
     const addressBox = document.createElement("input");
     addressBox.className = "textbox";
     addressBox.placeholder = "Enter your full address";
+    addressBox.required = true;
 
     // Adding select and home address box to div
     addingElements.appendChild(document.createElement("p"));
@@ -107,12 +109,14 @@ otherCountries.forEach(element => {
         const countryBox = document.createElement("input");
         countryBox.className = "textbox";
         countryBox.placeholder = "Enter full country name";
+        countryBox.required = true;
 
         const addressLabel = document.createElement("label");
         addressLabel.textContent = "Home address: ";
         const addressBox = document.createElement("input");
         addressBox.className = "textbox";
         addressBox.placeholder = "Enter your full address";
+        addressBox.required = true;
 
         // Adding country and address to div
         addingElements.appendChild(document.createElement("p"));
@@ -124,4 +128,38 @@ otherCountries.forEach(element => {
     });
 });
 
-// Deal with email validation/form validation, see assignments
+// Deal with email validation/form validation
+function validateForm(){
+    const emailAddress = document.getElementById("email-input").value;
+    const atSymbol = emailAddress.indexOf("@");
+    const dotSymbol = emailAddress.lastIndexOf(".");
+    if (atSymbol == -1 || atSymbol != emailAddress.lastIndexOf("@") || atSymbol == emailAddress.length-1 || dotSymbol == -1 || dotSymbol == emailAddress.length-1 || dotSymbol == atSymbol+1){
+        alert ("Email must follow a valid format; example@domain.com");
+        return false;
+    }
+
+    // if email valid, clear page and redirect to home
+    const name = document.getElementById("name-input").value;
+    const pageDiv = document.getElementById("form-style");
+    pageDiv.innerHTML = '';
+
+    const thankMessage = document.createElement("h3");
+    thankMessage.textContent = "Thank you, " + name + "!";
+    pageDiv.appendChild(thankMessage);
+
+    const successMessage = document.createElement("p");
+    successMessage.textContent = "Form was successfully submitted!\nExpect an email response within the next 7 working days.";
+    pageDiv.appendChild(successMessage);
+
+    const homeButton = document.createElement("button");
+    homeButton.textContent = "Return to Home";
+    homeButton.addEventListener("click", function(){
+        location = "homepage.html";
+    });
+    pageDiv.appendChild(homeButton);
+
+    return true;
+}
+
+// On submit action
+document.getElementById("repair-form").onsubmit = validateForm;
