@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LF Mechanics - Customs Shop</title>
+
+        <!-- CSS link -->
+        <link rel = "stylesheet" href = "customshop.css"/>
+    </head>
+    <body>
+        <header>
+            <div class = "header-container">
+                <div class = "header-logo">
+                    <img src = "weblogo.png" alt = "website logo" width = "220px" height = "210px"/>
+                </div>
+                <div class = "header-text">
+                    <h1>LF Mechanics</h1>
+                    <span>EST. 2025</span>
+                </div>
+            </div>
+        </header>
+        <br/>
+        <div id = "form-style">
+            <h2>Custom Order Form</h2>
+            <form id = "custom-form">
+                <label>Name:
+                    <input type = "text" class = "textbox" id = "name-input" placeholder = "Enter your full name" required/>
+                </label>
+                <br/><br/>
+                <label>Email:
+                    <input type = "text" class = "textbox" id = "email-input" placeholder = "Enter your email" required/>
+                </label>
+                <br/><br/>
+                <label>Country of Residence:
+                    <select name = "country" class = "selectbox" id = "country-select" required>
+                        <option value = "Canada" id = "canada-select">Canada</option>
+                        <option value = "USA" class = "other-select">USA</option>
+                        <option value = "UK" class = "other-select">UK</option>
+                        <option value = "Other" class = "other-select">Other</option>
+                    </select>
+                </label>
+                <br/>
+                <div id = "followup-location"></div> <!-- DOM elements added here -->
+                <br/>
+                <label>Project Description:<br/>
+                    <textarea name = "issue" id = "description-input" rows = 15 cols = 40 required></textarea>
+                </label>
+                <br/><br/>
+                <!-- Drag and drop images section -->
+                <label>
+                    <input type = "checkbox" id = "confirm-checkbox" required/> I confirm all of the information presented above is accurate.
+                </label>
+                <br/><br/>
+                <input type = "submit" value = "Submit Request" id = "submit-button"/>
+                <input type = "reset" value = "Clear Form" id = "clear-button"/>
+            </form>
+        </div>
+
+        <!-- Javascript link -->
+        <script type = "text/Javascript" src = "customshop.js"></script>
+    </body>
+</html>
