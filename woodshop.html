@@ -21,13 +21,22 @@
         <br/>
         <div id = "flexbox">
             <div id = "shopping-cart">
-                <center><img src = "woodshoppics/cart-icon.png" alt = "shopping cart icon" width = "40px" height = "40px"/></center>
-                <p>
+                <center><img src = "woodshoppics/cart-icon.png" alt = "shopping cart icon" style ="width:40px; height:40px;"/></center>
+                <p id = "cart-items">
                     Your shopping cart is empty.
                 </p>
+                <center>
+                    <button type = "button" id = "checkout-cart">Checkout</button> <!-- add functionalities -->
+                    <button type = "button" id = "clear-cart">Clear Cart</button>
+                </center>
             </div>
             <div id = "market">
-                <p> items go here </p>
+                <section id = "chair">
+                    <img src = "woodshoppics/defaultchair.jpg" alt = "default chair" width = "155px" height = "155px" onclick = "chairOptions()"/>
+                    <h3> Chairs </h3>
+                    <h4> 20.00-45.00$ </h4>
+                </section>
+                <!-- add tables, drawers, shelves with same functionality -->
             </div>
         </div>
 
