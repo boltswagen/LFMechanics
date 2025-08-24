@@ -103,7 +103,7 @@ function chairOptions(){
     bambooParagraph.appendChild(bambooBox);
     bambooParagraph.appendChild(bambooLabel);
     const bambooPrice = document.createElement("p");
-    bambooPrice.textContent = "40.00$"; // change price if needed
+    bambooPrice.textContent = "40.00$";
     bambooParagraph.appendChild(bambooPrice);
     bambooParagraph.style.gridColumn = "2";
     bambooParagraph.style.gridRow = "2";
@@ -123,7 +123,7 @@ function chairOptions(){
     cherryParagraph.appendChild(cherryBox);
     cherryParagraph.appendChild(cherryLabel);
     const cherryPrice = document.createElement("p");
-    cherryPrice.textContent = "45.00$"; // adjust price if you like
+    cherryPrice.textContent = "45.00$";
     cherryParagraph.appendChild(cherryPrice);
     cherryParagraph.style.gridColumn = "3";
     cherryParagraph.style.gridRow = "2";
