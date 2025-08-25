@@ -59,9 +59,10 @@ body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         padding: 20px;
         border-radius: 9px;
+        margin-right: 3%;
     }
 
-button {
+button, .button {
     padding: 10px;
     border-radius: 5px;
     border-color: lightgray;
@@ -69,9 +70,11 @@ button {
     background-color: #1a345e;
     color: white;
     font-size: 90%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
 }
 
-button:hover {
+button:hover, .button:hover {
     padding: 10px;
     border-radius: 5px;
     border-color: white;
@@ -79,6 +82,8 @@ button:hover {
     background-color: #4e6b99;
     color: white;
     font-size: 90%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
 }
 
 span {
