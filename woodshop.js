@@ -215,5 +215,15 @@ function chairOptions(){
 // Shelves interface
 
 
-// Clear cart functionality (add individual deletes)
+// Clear cart functionality
+function clearCart(){
+    const cart = document.getElementById("cart-items");
+    cart.innerHTML = '';
+    cart.textContent = "Your shopping cart is empty."
+}
+
 // Checkout functionality
+function checkoutCart(){
+    const checkout = document.getElementById("checkout-text");
+    checkout.textContent = "Feature coming soon!";
+}

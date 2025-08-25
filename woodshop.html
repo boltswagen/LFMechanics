@@ -27,9 +27,11 @@
                 </div>
                 <br/>
                 <center>
-                    <button type = "button" id = "checkout-cart">Checkout</button> <!-- add functionalities -->
-                    <button type = "button" id = "clear-cart">Clear Cart</button>
+                    <button type = "button" id = "checkout-cart" onclick = "checkoutCart()">Checkout</button>
+                    <button type = "button" id = "clear-cart" onclick = "clearCart()">Clear Cart</button>
                 </center>
+                <br/>
+                <p id = "checkout-text"></p>
             </div>
             <div id = "market" onclick = "openItem()">
                 <section id = "chair" class = "item" style="grid-column:1; grid-row:1;">
