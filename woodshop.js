@@ -1,32 +1,92 @@
 // Divs and sections here
-var market = document.getElementById("market");
-var chair = document.getElementById("chair");
+const market = document.getElementById("market");
+const chair = document.getElementById("chair");
+const table = document.getElementById("table");
+const dresser = document.getElementById("dresser");
+const bookshelf = document.getElementById("bookshelf");
 
-const originalMarket = market.innerHTML;
 const originalChair = chair.style.display;
+const originalTable = table.style.display;
+const originalDresser = dresser.style.display;
+const originalBookshelf = bookshelf.style.display;
 
-// Chair interface
-function chairOptions(){
-    // Clearing chair screen (ADD CLEAR ALL SECTIONS)
-    chair.style.display = "none";
-    market.style.display = "grid";
-    market.innerHTML = "";
+// Listener for whole market
+market.addEventListener("click", (e) => {
+    const target = e.target.closest(".item");
+    if (!target) return;
+
+    openItem(target.id);
+});
+
+function openItem(itemId){
+    // Clearing sections
+    const existingUI = document.getElementById("item-ui");
+    if (existingUI)
+        existingUI.remove();
+    chair.style.display = "none", table.style.display = "none", dresser.style.display = "none", bookshelf.style.display = "none";
+
+    // Wrapper for item interface
+    const uiWrapper = document.createElement("div");
+    uiWrapper.id = "item-ui";
+    uiWrapper.style.display = "grid";
 
     // Create back button
     const backButton = document.createElement("button");
     backButton.textContent = "< Back";
-    backButton.addEventListener("click", () => {
-        market.innerHTML = originalMarket;
+    backButton.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        [...market.children].forEach(el => el.style.display = "");
         chair.style.display = originalChair;
-        backButton.remove();
+        table.style.display = originalTable;
+        dresser.style.display = originalDresser;
+        bookshelf.style.display = originalBookshelf;
+        uiWrapper.remove();
     });
     backButton.style.height = "50px";
     backButton.style.width = "75px";
     backButton.style.gridColumn = "1";
-    backButton.style.gridColumn = "1";
-    market.appendChild(backButton);
-    market.appendChild(document.createElement("br"));
-    market.appendChild(document.createElement("br"));
+    backButton.style.gridRow = "1";
+    uiWrapper.appendChild(backButton);
+
+    // Create add to cart button
+    const addButton = document.createElement("button");
+    addButton.textContent = "Add to Shopping Cart";
+    addButton.style.alignItems = "center";
+    addButton.style.height = "75px";
+    addButton.style.width = "125px";
+    addButton.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        // Look at checkboxed items and add to shopping cart
+    });
+    addButton.style.gridColumn = "3";
+    addButton.style.gridRow = "2";
+    uiWrapper.appendChild(addButton);
+
+    // Switch to open different item interface
+    switch (itemId) {
+        case "chair":
+            uiWrapper.appendChild(chairOptions());
+            break;
+        case "table":
+            uiWrapper.appendChild(tableOptions());
+            break;
+        case "dresser":
+            uiWrapper.appendChild(dresserOptions());
+            break;
+        case "bookshelf":
+            uiWrapper.appendChild(bookshelfOptions());
+            break;
+    }
+
+    market.appendChild(uiWrapper);
+}
+
+
+// Chair interface
+function chairOptions(){
+    const wrapper = document.createElement("div");
+    wrapper.style.display = "grid";
+    wrapper.style.gap = "40px";
 
     // Display chair options as checkboxes
     const oakParagraph = document.createElement("p");
@@ -47,7 +107,7 @@ function chairOptions(){
     oakParagraph.appendChild(oakPrice);
     oakParagraph.style.gridColumn = "2";
     oakParagraph.style.gridRow = "1";
-    market.appendChild(oakParagraph);
+    wrapper.appendChild(oakParagraph);
 
     const spruceParagraph = document.createElement("p");
     const spruceChair = document.createElement("img");
@@ -67,7 +127,7 @@ function chairOptions(){
     spruceParagraph.appendChild(sprucePrice);
     spruceParagraph.style.gridColumn = "3";
     spruceParagraph.style.gridRow = "1";
-    market.appendChild(spruceParagraph);
+    wrapper.appendChild(spruceParagraph);
 
     const birchParagraph = document.createElement("p");
     const birchChair = document.createElement("img");
@@ -87,7 +147,7 @@ function chairOptions(){
     birchParagraph.appendChild(birchPrice);
     birchParagraph.style.gridColumn = "4";
     birchParagraph.style.gridRow = "1";
-    market.appendChild(birchParagraph);
+    wrapper.appendChild(birchParagraph);
 
     const bambooParagraph = document.createElement("p");
     const bambooChair = document.createElement("img");
@@ -107,7 +167,7 @@ function chairOptions(){
     bambooParagraph.appendChild(bambooPrice);
     bambooParagraph.style.gridColumn = "2";
     bambooParagraph.style.gridRow = "2";
-    market.appendChild(bambooParagraph);
+    wrapper.appendChild(bambooParagraph);
 
     const cherryParagraph = document.createElement("p");
     const cherryChair = document.createElement("img");
@@ -127,20 +187,9 @@ function chairOptions(){
     cherryParagraph.appendChild(cherryPrice);
     cherryParagraph.style.gridColumn = "3";
     cherryParagraph.style.gridRow = "2";
-    market.appendChild(cherryParagraph);
+    wrapper.appendChild(cherryParagraph);
 
-    // Create add to cart button
-    const addButton = document.createElement("button");
-    addButton.textContent = "Add to Shopping Cart";
-    addButton.style.alignItems = "center";
-    addButton.style.height = "75px";
-    addButton.style.width = "125px";
-    addButton.addEventListener("click", () => {
-        // Look at checkboxed items and add to shopping cart
-    });
-    addButton.style.gridColumn = "4";
-    addButton.style.gridRow = "2";
-    market.appendChild(addButton);
+    return wrapper;
 }
 
 // Table interface
