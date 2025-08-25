@@ -29,6 +29,9 @@ function openItem(itemId){
     const uiWrapper = document.createElement("div");
     uiWrapper.id = "item-ui";
     uiWrapper.style.display = "grid";
+    uiWrapper.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
 
     // Create back button
     const backButton = document.createElement("button");
@@ -56,7 +59,22 @@ function openItem(itemId){
     addButton.style.width = "125px";
     addButton.addEventListener("click", (ev) => {
         ev.stopPropagation();
-        // Look at checkboxed items and add to shopping cart
+        const selectedItems = document.querySelectorAll(`#item-ui input[name="${itemId}s"]:checked`);
+        const newItems = [...selectedItems].map(cb => cb.value);
+        if (newItems.length === 0){
+            alert("Please select items first!");
+            return;
+        }
+        // Empty cart and insert items
+        const cart = document.getElementById("cart-items");
+        cart.innerHTML = '';
+
+        // add newItems to shopping cart
+        newItems.forEach(item => {
+            const p = document.createElement("p");
+            p.textContent = item;
+            cart.appendChild(p);
+        })
     });
     addButton.style.gridColumn = "3";
     addButton.style.gridRow = "2";
@@ -97,7 +115,7 @@ function chairOptions(){
     const oakBox = document.createElement("input");
     oakBox.type = "checkbox";
     oakBox.name = "chairs";
-    oakBox.value = "oak-chair";
+    oakBox.value = "Oak Chair";
     const oakLabel = document.createElement("span");
     oakLabel.textContent = " Oak"
     oakParagraph.appendChild(oakBox);
@@ -117,7 +135,7 @@ function chairOptions(){
     const spruceBox = document.createElement("input");
     spruceBox.type = "checkbox";
     spruceBox.name = "chairs";
-    spruceBox.value = "spruce-chair";
+    spruceBox.value = "Spruce Chair";
     const spruceLabel = document.createElement("span");
     spruceLabel.textContent = " Spruce";
     spruceParagraph.appendChild(spruceBox);
@@ -137,7 +155,7 @@ function chairOptions(){
     const birchBox = document.createElement("input");
     birchBox.type = "checkbox";
     birchBox.name = "chairs";
-    birchBox.value = "birch-chair";
+    birchBox.value = "Birch Chair";
     const birchLabel = document.createElement("span");
     birchLabel.textContent = " Birch";
     birchParagraph.appendChild(birchBox);
@@ -157,7 +175,7 @@ function chairOptions(){
     const bambooBox = document.createElement("input");
     bambooBox.type = "checkbox";
     bambooBox.name = "chairs";
-    bambooBox.value = "bamboo-chair";
+    bambooBox.value = "Bamboo Chair";
     const bambooLabel = document.createElement("span");
     bambooLabel.textContent = " Bamboo";
     bambooParagraph.appendChild(bambooBox);
@@ -177,7 +195,7 @@ function chairOptions(){
     const cherryBox = document.createElement("input");
     cherryBox.type = "checkbox";
     cherryBox.name = "chairs";
-    cherryBox.value = "cherry-chair";
+    cherryBox.value = "Cherry Chair";
     const cherryLabel = document.createElement("span");
     cherryLabel.textContent = " Cherry Wood"; 
     cherryParagraph.appendChild(cherryBox);
@@ -195,7 +213,6 @@ function chairOptions(){
 // Table interface
 // Drawer interface
 // Shelves interface
-
 
 
 // Clear cart functionality (add individual deletes)
